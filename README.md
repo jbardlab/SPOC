@@ -2,7 +2,7 @@
 
 This is a code repository for SPOC, a random forest classifier designed to evaluate AlphaFold multimer predictions of binary human protein pairs to assess their structural plasuability and consistency with experimental omics data.
 
-For more information please the associated publication: Predictomes: A classifier-curated database of AlphaFold-modeled protein-protein interactions
+For more information please see the associated publication: Predictomes: A classifier-curated database of AlphaFold-modeled protein-protein interactions
 
 # Using SPOC on Linux
 
@@ -57,7 +57,7 @@ For more information please the associated publication: Predictomes: A classifie
 SPOC is designed to analyze complexes containing only pairs of human proteins run in at least 3 AlphaFold 2 multimer models.
 The program will ignore any complexes that do not meet the above criteria.
 The program will attempt to use all available CPUs to maximally parallelize the run and minimize runtime.
-The program does not require any specific naming formats for the files (besides the words unrelaxed in the filename), as it extracts sequences from the PDB files directly to determine which proteins are in which files.
+The program does not require any specific naming formats for the files (besides the words unrelaxed in the filename), as it extracts sequences from the PDB files directly to determine which proteins are in which files and use Protein BLAST to match sequences to UniProt IDs.
 
 ```bash
 python3 run.py my_afm_predictions_folder
