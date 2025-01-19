@@ -6,6 +6,21 @@ For more information please see the associated publication: Predictomes: A class
 
 # Using SPOC on Linux
 
+## Cloning the Repository
+
+To clone the SPOC repository, use the following command:
+
+```bash
+git clone https://github.com/walterlab-HMS/SPOC.git
+```
+
+Navigate into the cloned directory:
+
+```bash
+cd SPOC
+```
+
+
 ## Step 1: Install Miniconda (if conda is not already installed)
 
 1. **Download Miniconda:**
