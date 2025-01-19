@@ -1266,9 +1266,11 @@ def main(folder_paths:list, name_filter:str, classifier, output_name:str):
     :param folder_paths: List of folder paths containing data.
     :param name_filter: Filter for complex names.
     :param classifier: Random forest classifier model.
-    :param output_name: Name for the output file.
+    :param output_name: Name for the output file. If not set will use a default name. 
     """
 
+
+    #First find all the complexes that can be analyzed across all folders
     complexes = {}
 
     for folder_path in folder_paths:
@@ -1367,9 +1369,13 @@ def main(folder_paths:list, name_filter:str, classifier, output_name:str):
 
         final_df = pd.DataFrame(final_datalist)
         final_df = final_df[columns]
-        final_csv_path = folder_path.rstrip('/') + "_SPOC_analysis.csv"
+
+        folder_name = folder_path.rstrip('/').split('/').pop()
+        final_csv_path = folder_name + "_SPOC_analysis.csv"
         if output_name: 
-            final_csv_path = output_name + '.csv'
+            if not output_name.endswith('.csv'):
+                output_name += '.csv'
+            final_csv_path = output_name
   
         final_df.sort_values(by=['spoc_score'], ascending=False, inplace=True)
         final_df.to_csv(final_csv_path, index=None)

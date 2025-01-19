@@ -1,7 +1,10 @@
-<<<<<<< HEAD
-# 2025_SPOC_AFM_analysis
-=======
-# Setting Up Conda and Creating the SPOC Environment (Linux)
+# About
+
+This is a code repository for SPOC, a random forest classifier designed to evaluate AlphaFold multimer predictions of binary human protein pairs to assess their structural plasuability and consistency with experimental omics data.
+
+For more information please the associated publication: Predictomes: A classifier-curated database of AlphaFold-modeled protein-protein interactions
+
+# Using SPOC on Linux
 
 ## Step 1: Install Miniconda (if conda is not already installed)
 
@@ -57,25 +60,25 @@ The program will attempt to use all available CPUs to maximally parallelize the 
 The program does not require any specific naming formats for the files (besides the words unrelaxed in the filename), as it extracts sequences from the PDB files directly to determine which proteins are in which files.
 
 ```bash
-python3 SPOC/run.py my_afm_predictions_folder
+python3 run.py my_afm_predictions_folder
 ```
 
 ```bash
-python3 SPOC/run.py my_afm_predictions_folder_01 my_afm_predictions_folder_02
+python3 run.py my_afm_predictions_folder_01 my_afm_predictions_folder_02
 ```
 
 ```bash
-python3 SPOC/run.py my_afm_predictions_folder_0?
+python3 run.py my_afm_predictions_folder_0?
 ```
 
 ```bash
-python3 SPOC/run.py my_afm_predictions_folder_0? --name_filter MCM --output only_mcm_complexes
+python3 run.py my_afm_predictions_folder_0? --name_filter MCM --output only_mcm_complexes
 ```
 
 See all available options by running:
 
 ```bash
-python3 SPOC/run.py --help
+python3 run.py --help
 ```
 
 ---
@@ -130,4 +133,3 @@ After running SPOC, the output files will be generated in the location where you
 - If you encounter any errors, check the console output to help debug any issues.
 
 ---
->>>>>>> 9abc648 (Initial commit for SPOC upload)
