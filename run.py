@@ -501,6 +501,20 @@ def get_af_model_num(filename) -> int:
     return model_num
 
 
+def get_seed_num(filename) -> int:
+    """
+        Returns the seed from an input filestring as an int
+
+        :param filename: string representing the filename from which to extract the model number
+    """ 
+    
+    if "seed_" not in filename: return 0
+
+    seed = int(re.findall(r'seed_\d+', filename)[0].replace("seed_", ''))
+    return seed
+
+
+
 def get_filepaths_for_complex(path:str, complex_name:str, pattern:str = '*') -> list:
     """
         Helper methdof for returning a list of filepaths (strs) that match the specified GLOB pattern

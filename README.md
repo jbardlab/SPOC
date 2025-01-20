@@ -1,8 +1,11 @@
 # About
 
-This is a code repository for SPOC, a random forest classifier designed to evaluate AlphaFold multimer predictions of binary human protein pairs to assess their structural plasuability and consistency with experimental omics data.
+This is a code repository for SPOC (Structure Prediction and Omics Classifier), a random forest classifier designed to evaluate AlphaFold multimer predictions of binary human protein pairs to assess their structural plausibility and consistency with experimental omics data.
 
-For more information please see the associated publication: Predictomes: A classifier-curated database of AlphaFold-modeled protein-protein interactions
+For more information, please see the associated publication: Predictomes: A classifier-curated database of AlphaFold-modeled protein-protein interactions
+
+This code was developed and tested on a Linux system.
+
 
 # Using SPOC on Linux
 
@@ -69,10 +72,21 @@ cd SPOC
 
 ## Step 3: Run SPOC to Analyze Predictions
 
-SPOC is designed to analyze complexes containing only pairs of human proteins run in at least 3 AlphaFold 2 multimer models.
-The program will ignore any complexes that do not meet the above criteria.
-The program will attempt to use all available CPUs to maximally parallelize the run and minimize runtime.
-The program does not require any specific naming formats for the files (besides the words unrelaxed in the filename), as it extracts sequences from the PDB files directly to determine which proteins are in which files and use Protein BLAST to match sequences to UniProt IDs.
+SPOC is trained specifically to analyze complexes containing pairs of human proteins run in at least three AlphaFold-Multimer models. The program will ignore any complexes that do not meet the above criteria. The program will attempt to use all available CPUs in parallel to minimize runtime. The program does not require specific file naming formats (besides the words unrelaxed andthe alphafold model number used in the filename), as it extracts sequences from the PDB files directly to determine which proteins are in which files and uses Protein BLAST to match sequences to UniProt IDs.
+
+```
+Example folder
+
+my_afm_predictions_folder/
+│-- DONS_HUMAN__MCM3_HUMAN__1374aa.a3m.xz
+│-- DONS_HUMAN__MCM3_HUMAN__1374aa_scores_rank_001_alphafold2_multimer_v3_model_1_seed_000.json.xz
+│-- DONS_HUMAN__MCM3_HUMAN__1374aa_scores_rank_002_alphafold2_multimer_v3_model_2_seed_000.json.xz
+│-- DONS_HUMAN__MCM3_HUMAN__1374aa_scores_rank_003_alphafold2_multimer_v3_model_4_seed_000.json.xz
+│-- DONS_HUMAN__MCM3_HUMAN__1374aa_unrelaxed_rank_001_alphafold2_multimer_v3_model_1_seed_000.pdb.xz
+│-- DONS_HUMAN__MCM3_HUMAN__1374aa_unrelaxed_rank_002_alphafold2_multimer_v3_model_2_seed_000.pdb.xz
+│-- DONS_HUMAN__MCM3_HUMAN__1374aa_unrelaxed_rank_003_alphafold2_multimer_v3_model_4_seed_000.pdb.xz
+
+```
 
 ```bash
 python3 run.py my_afm_predictions_folder
