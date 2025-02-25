@@ -1,8 +1,8 @@
 # About
 
-This is a code repository for SPOC (Structure Prediction and Omics Classifier), a random forest classifier designed to evaluate AlphaFold multimer predictions of binary human protein pairs to assess their structural plausibility and consistency with experimental omics data.
+This is a code repository for SPOC (Structure Prediction and Omics informed Classifier), a random forest classifier designed to evaluate AlphaFold multimer predictions of binary human protein pairs to assess their structural plausibility and consistency with experimental omics data.
 
-For more information, please see the associated publication: Predictomes: A classifier-curated database of AlphaFold-modeled protein-protein interactions
+For more information, please see the associated publication: Predictomes, A classifier-curated database of AlphaFold-modeled protein-protein interactions
 
 This code was developed and tested on a Linux system.
 
