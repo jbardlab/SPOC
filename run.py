@@ -286,7 +286,7 @@ def get_af_missense_data(uniprot_id):
 
 
 blastp_cache = {}
-def get_best_hs_matches(sequence:str, evalue:float=0.001, max_hits:int=5):
+def get_best_hs_matches(sequence:str, evalue:float=None, max_hits:int=5):
     """
     Perform a BLAST search to find the best human sequence matches.
 
@@ -298,6 +298,17 @@ def get_best_hs_matches(sequence:str, evalue:float=0.001, max_hits:int=5):
 
     if sequence in blastp_cache:
         return blastp_cache[sequence]
+
+    if evalue is None:
+        #Impute evalue to use based on query sequence length
+        #Higher e values for shorter sequences as otherwise matches will be missed
+        seq_len = len(sequence)
+        if seq_len < 30:
+            evalue = 10
+        elif seq_len < 50:
+            evalue = 1
+        elif seq_len < 100:
+            evalue = 0.01
     
     # Create a temporary file for the query sequence in FASTA format
     temp_fd, temp_path = tempfile.mkstemp(suffix=".fasta")
