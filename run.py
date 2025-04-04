@@ -747,9 +747,11 @@ def get_data_from_structure(pdb_filepath:str, max_distance:float = 8, min_plddt:
 
     #holds 3d coordinates of all amide nitrogens for all residues
     #organized as a 2d list with rows representing chains and columns are residues within the chain
+    #Code assumes that the amino nitrogen is always the first atom of a residue encountered (is true in AF-M)
     N_coords = []
     pdb_res_sequence = ''
     plddts = []
+    residue = None
     
     for atom_line in get_lines_from_pdb_file(pdb_filepath):
         if atom_line[0:4] != 'ATOM':
@@ -794,7 +796,8 @@ def get_data_from_structure(pdb_filepath:str, max_distance:float = 8, min_plddt:
             #add nitrogen atom coordinates to coordinates list to allow for fast broad searching later
             N_coords[chain_index].append(atom['xyz'])
 
-        residue['atoms'].append(atom)
+        if residue is not None:
+            residue['atoms'].append(atom)
     
     contacts = []
     num_chains = len(chains)
