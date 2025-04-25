@@ -6,4 +6,5 @@ docker run --rm \
   -v "${input_dir}":/input \
   -v "${repo_dir}":/repo \
   ${container} \
-  bash -c "python /repo/run_custom.py /input"
+  bash -c "which python"
+  #"python /repo/run_custom.py /input"
