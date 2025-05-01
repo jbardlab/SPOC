@@ -7,6 +7,14 @@
 #If you use this code or its output as part of a publication, please cite the AlphaFold2 multimer manuscript, the ColabFold manuscript and the SPOC manuscript.
 
 # Updated on 04/25/2025 by Jared Bard to only run structure analysis
+# This involved a number of changes. Foremost, I had to find code to calculate the pDockQ and pDockQv2 scores.
+#    pDockQ: Bryant, Pozotti, and Eloffson. https://www.nature.com/articles/s41467-022-28865-w
+#    pDockQ2: Zhu, Shenoy, Kundrotas, Elofsson. https://academic.oup.com/bioinformatics/article/39/7/btad424/7219714
+# Luckily, someone had already written a script to calculate these: https://github.com/DunbrackLab/IPSAE/.
+# I asked Google Gemini 2.5 pro to help me incorporate the results of this script into the SPOC code (see call_ipsae_and_parse).
+# There were also a number of parameters that the structure RF model used that SPOC did not, so i had to calculate those.
+# Most of those were just variants of scores that were already calculated, so I implemented those largely inanalyze_complex_nobio.
+# I was also aided by the descriptions of each parameter in Table S3 from the predictomes paper: 10.1016/j.molcel.2025.01.034.
 ###############################################################################################################################################################
 
 import argparse, os, glob, re, random, math, lzma, gzip, csv, json, time, sys
