@@ -6,5 +6,5 @@ docker run --rm \
   -v "${input_dir}":/input \
   -v "${repo_dir}":/repo \
   ${container} \
-  bash -c "which python"
-  #"python /repo/run_custom.py /input"
+  bash -c \
+  "python /repo/scripts/run_custom_nobio.py /input --rf_params /repo/models/rf_afm_no_bio.joblib --output /input/spoc_nobio_output.csv --ipsae_script /repo/scripts/ipsae.py"
