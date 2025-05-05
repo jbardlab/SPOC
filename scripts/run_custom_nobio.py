@@ -844,6 +844,10 @@ def calculate_interface_statistics_nobio(contacts:dict) -> dict:
     else:
         pae_min = 0
         plddt_min = 0
+        distance_avg = 0
+        plddt_diff_avg = 0
+        plddt_avg = 0
+        pae_avg = 0
 
     data = {'num_residue_contacts':num_contacts,
             'num_residues':len(unique_residues),
