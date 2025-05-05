@@ -1108,7 +1108,10 @@ def main(folder_paths:list, name_filter:str, classifier, output_name:str, ipsae_
 
         print(f"Errors occurred for {len(errored_complexes)} complexes.")
         if len(errored_complexes) > 0:
-            final_error_csv_path = folder_path.rstrip('/') + "_errored_complexes.csv"
+            if output_name: 
+                if not output_name.endswith('.csv'):
+                    output_name += '.csv'
+                final_error_csv_path = output_name.replace('.csv', '_errored_complexes.csv')
             # Convert list to DataFrame
             df = pd.DataFrame(errored_complexes, columns=['complex_name'])
             # Write DataFrame to CSV
