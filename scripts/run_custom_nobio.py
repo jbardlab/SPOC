@@ -716,7 +716,9 @@ def get_data_nobio(pdb_filepath:str, pae_filepath:str, ipsae_script_path=str, ma
                 'plddt_max': plddt_max,
                 'plddt_mean':plddt_mean,
                 'disorder_percent':round(100*((unfiltered_plddts < 50).sum()/total_aa_length), 0),
-                'aa_sequence':aa_sequence}
+                'aa_sequence':aa_sequence,
+                'pdockq': pdockq_score,
+                'pdockq_v2': pdockq_v2_score}
     
     filtered_contacts = {}
 
@@ -957,9 +959,8 @@ def analyze_complex_nobio(complex_name:str, complexes:dict, ipsae_script_path:st
             data = get_data_nobio(pdb_filepath, pae_filepath, ipsae_script_path)
             contacts = data['contacts']
             interface_contacts[model_num] = contacts
-            print("Calculating interface stats")
+            print(f"Calculating interface stats for model {model_num}")
             if_stats = calculate_interface_statistics_nobio(contacts)
-            
             residue_contacts_across_predictions = np.append(residue_contacts_across_predictions, if_stats['num_residue_contacts']);
             iptm_values = np.append(iptm_values, data['iptm'])
             pdockq_values = np.append(pdockq_values, data['pdockq'])
